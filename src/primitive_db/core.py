@@ -1,6 +1,5 @@
 # src/primitive_db/core.py
 import ast
-import json as js
 import os
 import re
 

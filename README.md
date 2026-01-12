@@ -25,4 +25,4 @@
 11. **help** Справочная информация
 
 ### Демо
-
+https://asciinema.org/a/aqKit6vK7S8fUBQO
