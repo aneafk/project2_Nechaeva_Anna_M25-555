@@ -1,5 +1,5 @@
 [project]
-name = "project2-nechaeva-anna-m25-555"
+name = "project2-nechaeva-m25-555"
 version = "0.1.0"
 description = ""
 authors = [
@@ -19,8 +19,14 @@ build-backend = "poetry.core.masonry.api"
  packages = [
      { include = "src" },
  ]
- [tool.poetry.scripts]
-project = "src.primitive_db.main:main"
+ 
+[tool.poetry.scripts]
+database = "src.primitive_db.main:main"
+
+[tool.poetry.dependencies]
+python = ">=3.12"
+prompt = "^0.4.1"
+prettytable = "^3.16.0"
 
 [tool.ruff]
 line-length = 88
@@ -33,5 +39,5 @@ ignore = []
 
 [dependency-groups]
 dev = [
-    "ruff (>=0.14.10,<0.15.0)"
+    "ruff (>=0.14.11,<0.15.0)"
 ]
