@@ -18,7 +18,7 @@ def user_input() -> str:
     return user_command.strip()
 
 
-# Функция загрузки мета данных
+# Функция загрузки метаданных
 @handle_db_errors
 def load_metadata(filepath: str) -> dict:
     '''
@@ -45,7 +45,7 @@ def save_metadata(filepath: str, data: dict) -> None:
     return
 
 
-# Функция загрузки данных таблицы из .json файла таблицы
+# Функция загрузки данных из .json файла 
 @handle_db_errors
 def load_table_data(table_name: str) -> dict:
     '''
@@ -59,7 +59,7 @@ def load_table_data(table_name: str) -> dict:
     return loaded_tabledata
     
 
-# Функция сохранения данных таблицы в .json файл
+# Функция сохранения данных в .json файле
 @handle_db_errors
 def save_table_data(table_name: str, data: dict) -> None:
     '''
@@ -75,7 +75,7 @@ def save_table_data(table_name: str, data: dict) -> None:
         tabledata_json.write(saved_tabledata)
     return
 
-# Функция отображения помощи
+# Функция для отображения помощи
 def print_help() -> None:
     '''
     Идет по константе с командами и описанием и последовательно выводит
@@ -87,7 +87,7 @@ def print_help() -> None:
     
 
 @handle_db_errors
-# Функция получения/записи кэша
+# Функция кэша
 def create_cacher():
     cache = {}
 

@@ -27,7 +27,6 @@ from .utils import (
 def run():
     print('***')
     print_help()
-    # Создаем кэш
     select_cache = create_cacher()
     
     while True:

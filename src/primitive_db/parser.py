@@ -5,7 +5,7 @@ from .constants import CURRENT_TYPES
 from .decorators import handle_db_errors
 
 
-# Функция парсера для парсинга set и where
+# Функция парсера для set и where
 @handle_db_errors
 def parser_clause(clause: str) -> dict:
     '''

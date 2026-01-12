@@ -177,7 +177,7 @@ def insert(metadata: dict, data: dict, cache, table_name: str, values: str) -> d
     return data
   
 
-# Функция select таблицы
+# Функция select 
 @handle_db_errors
 @log_time
 def select(table_name: str, table_data: dict, cache, metadata: dict = None, where_clause: dict = None) -> None: # noqa: E501
@@ -203,7 +203,7 @@ def select(table_name: str, table_data: dict, cache, metadata: dict = None, wher
                 print(f'Ошибка: тип данных в условии where/set: {str(type(where_value).__name__)} не совпадает с типом данных {metadata[table_name_clean][where_column]} в схеме таблицы.') # noqa: E501
                 return
             
-            # Механизм кэширования
+            
             key_cache = table_name_clean + '_' + str(where_column) + str(where_value)
             select_result = cache(key_cache, fetch_data, 'select', table_data, where_column, where_value) # noqa: E501
             
@@ -247,7 +247,7 @@ def fetch_data(table_data: dict, where_column: str = None, where_value=None) -> 
     return table_data
 
 
-# Функция обновления данных в таблице
+# Функция обновления данных 
 @handle_db_errors
 def update(table_name: str, metadata: dict, cache, table_data: dict, set_clause: dict, where_clause: dict) -> dict: # noqa: E501
     '''
@@ -296,7 +296,7 @@ def update(table_name: str, metadata: dict, cache, table_data: dict, set_clause:
         return table_data
     
     
-# Функция удаления записей из таблицы
+# Функция удаления записей 
 @confirm_action('удаление данных из таблицы')
 @handle_db_errors
 def delete(table_data: dict, table_name: str, cache, metadata: dict, where_clause: dict) -> dict: # noqa: E501
@@ -358,7 +358,7 @@ def info(table_name: str, metadata: dict, table_data: dict) -> None:
     return
     
     
-# Вспомогательная функция для поиска значений
+# Вспомогательная функция поиска 
 @handle_db_errors
 def find_indices(column_values: list, value) -> list:
     '''
