@@ -24,7 +24,12 @@ def load_metadata(filepath: str) -> dict:
     '''
     filepath - путь до .json файла.
     Функция загружает текущие мета данные из файла
+    Если файл не существует — возвращает пустой словарь.
     '''
+    from pathlib import Path
+    path = Path(filepath)
+    if not path.exists():
+        return {}
     with open(filepath, encoding='utf-8') as metadata_json:
         loaded_metadata = js.load(metadata_json)
     return loaded_metadata
@@ -62,6 +67,7 @@ def load_table_data(table_name: str) -> dict:
 # Функция сохранения данных в .json файле
 @handle_db_errors
 def save_table_data(table_name: str, data: dict) -> None:
+
     '''
     table_name - имя таблицы,
     data - загружаемые данные таблицы.
@@ -69,7 +75,7 @@ def save_table_data(table_name: str, data: dict) -> None:
     существует (существует ее файл), то загружает в него актуальные данные.
     '''
     clean_table_name = table_name.strip().lower()
-    
+    TABLE_PATH.mkdir(exist_ok=True)  
     saved_tabledata = js.dumps(data)
     with open(TABLE_PATH / (clean_table_name + '.json'), 'w', encoding='utf-8') as tabledata_json: # noqa: E501
         tabledata_json.write(saved_tabledata)

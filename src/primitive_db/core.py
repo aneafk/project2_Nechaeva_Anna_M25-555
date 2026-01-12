@@ -8,6 +8,7 @@ import prettytable as pt
 
 from .constants import CURRENT_TYPES, META_FILE, TABLE_PATH
 from .decorators import confirm_action, handle_db_errors, log_time
+from .utils import save_table_data
 
 
 # Функция создания таблицы
@@ -58,13 +59,9 @@ def create_table(metadata: dict, table_name: str, columns: list) -> dict:
         
         metadata[table_name_clean] = dict_columns
       
-        table_data = {}
-        for column_name_type in columns_clean:
-            table_data[column_name_type.split(':')[0]] = []
-        table_data_json = js.dumps(table_data, ensure_ascii=False)
-      
-        with open(TABLE_PATH / (table_name_clean + '.json'), 'w', encoding='utf-8') as new_data_file: # noqa: E501
-            new_data_file.write(table_data_json)
+        
+        table_data = {col.split(':')[0]: [] for col in columns_clean}
+        save_table_data(table_name_clean, table_data)
       
         print(f'Таблица "{table_name_clean}" успешно создана со столбцами: {", ".join(columns_clean)}') # noqa: E501
         return metadata
